@@ -1,0 +1,312 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+html{
+ font-size: 62.5%;
+ /*1rem=10px*/
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+	background: #ddeefc;
+	font-family: 'Lato', sans-serif;
+	font-size: 1.6rem;
+}
+
+.contenedor{
+	width: 90%;
+	max-width: 100rem; /*maximo de pagina*/
+	padding: 4rem 2rem;
+	margin: auto; /*centrar pagina horizontalmente*/
+	display: flex;
+	flex-direction: column;
+	align-items: center; /*alinear horizontalmente x direction column*/
+}
+
+/*Estilos de las tarjetas*/
+
+.tarjeta{
+	width: 100%;
+	max-width: 55rem;
+	position: relative;
+	color: #7d8994;
+	font-size: 1.6rem;
+	transition: .3s ease all;
+	transform: rotateY(0deg); /*no movimiento al rotar*/
+	transform-style: preserve-3d;
+	 /*ocultar la parte de atras*/
+	cursor: pointer;
+	z-index: 2;
+}
+
+.tarjeta.active{
+	transform: rotateY(180deg);
+}
+
+/*acceder a los 2 div que tiene dentro*/
+.tarjeta > div {
+	padding: 3rem;
+	border-radius:1.5rem;
+	min-height: 25rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	box-shadow:0 1rem 1rem 0 rgba(90, 116, 148, 0.3);
+}
+
+/*tarjeta delantera*/
+
+.tarjeta .delantera{
+	backface-visibility: hidden;
+	background:url(../img/bg-tarjeta/bg-tarjeta-visa.jpg);
+	background-size: cover;
+}
+
+.delantera .logo-marca{
+	text-align: right;
+	min-height: 5rem;
+}
+
+.delantera .logo-marca img{
+	width: 100%;
+	height: 100%;
+	object-fit: cover; /*recortar img*/
+	max-width: 8rem;
+}
+
+.delantera .chip{
+	width: 100%;
+	max-width: 5rem;
+	margin-bottom: 2rem;
+}
+
+.delantera .grupo .label{
+	font-size: 1.6rem;
+	color:#7d8994;
+	margin-bottom: 5px;
+}
+
+@font-face {
+	font-family: 'credit';
+	src: url(../fonts/credit-card/credit.ttf);
+}
+
+.visa-color{
+	font-family: 'credit';
+	color:#cecfca;
+	text-transform: uppercase;
+}
+
+.mastercard-color{
+	font-family: 'credit';
+	color: #393E46;
+	text-transform: uppercase;
+}
+
+.delantera .grupo .numero,
+.deantera .grupo .expiracion{
+	font-size: 1.8rem;
+}
+
+.delantera .grupo .nombre{
+	font-size: 2rem;
+}
+
+
+.flexbox{
+	display: flex;
+	justify-content: space-between;
+	margin-top: 2rem;
+}
+
+/*parte trasera*/
+
+.tarjeta .trasera{
+	background: url(../img/bg-tarjeta/bg-tarjeta-visa.jpg);
+	background-size: cover;
+	position: absolute; /*colocacion sobre la tarjeta delantera*/
+	top: 0;
+	transform: rotateY(180deg);
+	backface-visibility: hidden;
+}
+
+.trasera .barra-magnetica{
+	height: 4rem;
+	background: black;
+	width: 100%;
+	position: absolute;
+	top: 3rem;
+	left: 0;
+}
+
+.trasera .datos{
+	margin-top: 6rem;
+	display: flex;
+	justify-content: center;
+}
+
+.trasera .datos p{
+	margin-bottom: 5px;
+}
+
+.trasera .datos #firma{
+	width: 70%
+}
+
+.trasera .datos #firma .firma{
+	height: 4rem;
+	background: repeating-linear-gradient(-45deg, white 0, white 5px, #e4efe7 5px, #e4efe7 10px);
+}
+
+.trasera .datos #firma .firma p{
+	line-height: 4rem;
+	font-family:'Liu Jian Mao Cao',cursive;
+	color: black;
+	font-size: 3rem;
+	padding: 0 1rem;
+	text-transform: capitalize; /*fuerza a que la primer letra sea convertida en mayuscula*/
+}
+
+.trasera .datos #ccv {
+	width: 20%;
+	text-align: center;
+}
+
+.trasera .datos #ccv .ccv{
+	background-color: #e4efe7;
+	line-height: 4rem;
+	height: 4rem;
+	width: 8rem;
+	color: black;
+}
+
+.trasera .leyenda{
+	color:#7d8994;
+	font-size: 1.4rem;
+	line-height: 2.4rem;
+}
+
+.trasera .link-banco{
+	font-size: 1.4rem;
+	color:#7d8994;
+}
+
+/*contenedor boton*/
+
+.contenedor-btn .btn-abrir-formulario{
+	position: relative;
+	top: -2.5rem;
+	z-index: 3;
+	width: 5rem;
+	height: 5rem;
+	font-size: 2rem;
+	line-height: 2rem;
+	background:#393e46;
+	color: white;
+	border:none;
+	border-radius: 100%;
+	padding: 1px;
+	transition: all .2s ease;
+	cursor: pointer;
+}
+
+
+
+.contenedor-btn .btn-abrir-formulario.active{
+	transform: rotate(45deg);
+/*	background: #0278ae;*/
+}
+
+/*Formulario tarjte*/
+.formulario-tarjeta{
+	background: white;
+	width: 100%;
+	max-width: 70rem;
+	padding: 15rem 3rem 3rem 3rem;
+	border-radius: 1rem;
+	position: relative;
+	top:-15rem;
+	z-index: 1;
+	clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+	transition: clip-path .3s ease-out;
+}
+
+.formulario-tarjeta.active{
+	clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.formulario-tarjeta label{
+	display: block;
+	margin: 1rem 0;
+	font-size: 1.6rem;
+}
+
+.formulario-tarjeta input,
+.formulario-tarjeta select,
+.btn-enviar{
+	border: 2px solid grey;
+	font-size: 1.8rem;
+	height: 50%;
+	width: 100%;
+	padding: 1rem 0.5rem;
+	transition:  .3s ease all;
+	border-radius: 5px;
+}
+
+.btn-enviar{
+	background:#393e46;
+	color: white;
+	border: none;
+}
+
+.btn-enviar:hover{
+	cursor: pointer;
+}
+
+.formulario-tarjeta input:hover,
+.formulario-tarjeta select:hover{
+	border: 2px solid black;
+}
+
+.formulario-tarjeta input{
+	text-transform: uppercase;
+}
+
+.formulario-tarjeta .flexbox{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 1rem;
+}
+
+.formulario-tarjeta .expira{
+	width: 100%;
+}
+
+.formulario-tarjeta .cvv{
+	min-width: 100px;
+}
+
+.formulario-tarjeta .grupo-select{
+	position:relative;
+	width: 100%;
+	margin-right: 3rem
+}
+
+.formulario-tarjeta select{
+	-webkit-appearance: none;
+}
+
+.formulario-tarjeta .grupo-select i{
+	position: absolute;
+	color:grey;
+	top: 1.5rem;
+	right: 0;
+	transition: .3s ease all;
+}
